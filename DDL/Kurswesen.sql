@@ -12,6 +12,6 @@ CREATE TABLE Kurs (
 	BEZ NVARCHAR(100) NOT NULL, 
 	MaxTeilnehmer INT NOT NULL, 
 	Kosten INT NOT NULL, 
-	StartDatum DATE NOT NULL, 
+	StartDatum DATE, 
 	Dauer DECIMAL(2,1) NOT NULL
 );
