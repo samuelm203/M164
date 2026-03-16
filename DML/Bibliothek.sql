@@ -234,9 +234,9 @@ DELETE FROM Kunde WHERE Vorname IN ('Max', 'Lewis') AND Kundennummer NOT IN (SEL
 SELECT * FROM Kunde; 
 
 -- Reservationen aufräumen
-SELECT * FROM Buch_Kunde WHERE Enddatum < DATEADD(DAY, 0, CAST(GETDATE() AS date)); 
+SELECT * FROM Buch_Kunde WHERE Enddatum < CAST(GETDATE() AS date); 
 
-DELETE FROM Buch_Kunde WHERE Enddatum < DATEADD(DAY, 0, CAST(GETDATE() AS date));
+DELETE FROM Buch_Kunde WHERE Enddatum < CAST(GETDATE() AS date);
 
 -- Buch überprüfen und löschen
 
