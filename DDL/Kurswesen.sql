@@ -9,7 +9,7 @@ USE Kurswesen;
 -- Tabelle "Kurs" erstellen
 CREATE TABLE Kurs (
 	KursID INT IDENTITY(1,1) PRIMARY KEY, 
-	BEZ NVARCHAR NOT NULL, 
+	BEZ NVARCHAR(100) NOT NULL, 
 	MaxTeilnehmer INT NOT NULL, 
 	Kosten INT NOT NULL, 
 	StartDatum DATE NOT NULL, 
