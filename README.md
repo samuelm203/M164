@@ -12,10 +12,12 @@ M164/
 │   ├── Bibliothek.sql          # Vollständiges Schema der Bibliotheksdatenbank
 │   ├── ComputerShop.sql        # Schema des ComputerShops (schrittweise aufgebaut)
 │   ├── ComputerShopFullScript.sql  # Überarbeitetes, bereinigtes ComputerShop-Schema
-│   └── Druckerverwaltung.sql   # Schema zur Verwaltung von Druckern
+│   ├── Druckerverwaltung.sql   # Schema zur Verwaltung von Druckern
+│   └── Kurswesen.sql           # Schema zur Verwaltung von Kursen
 └── DML/                        # Datenmanipulations-Skripte
     ├── Bibliothek.sql           # Vollständige Testdaten und DML-Operationen
-    └── Bibliothek_BisKap8.sql  # Testdaten für die Bibliothek bis Kapitel 8
+    ├── Bibliothek_BisKap8.sql  # Testdaten für die Bibliothek bis Kapitel 8
+    └── Kurswesen.sql           # Testdaten und DML-Operationen für das Kurswesen
 ```
 
 ---
@@ -83,6 +85,16 @@ Das Skript enthält zuerst eine schrittweise Entwicklung, dann ein vollständige
 
 ---
 
+### Kurswesen (`DDL/Kurswesen.sql`)
+
+Dieses Skript erstellt die Datenbank **Kurswesen** mit folgender Tabelle:
+
+| Tabelle | Beschreibung |
+|---------|--------------|
+| `Kurs`  | Kurse mit Bezeichnung, maximaler Teilnehmerzahl, Kosten, Startdatum und Dauer |
+
+---
+
 ## DML – Data Manipulation Language
 
 ### Bibliothek (`DML/Bibliothek.sql` & `DML/Bibliothek_BisKap8.sql`)
@@ -106,6 +118,21 @@ Diese Skripte befüllen und manipulieren die Bibliotheksdatenbank:
 - Mitarbeiter befördern
 - Reservationen verlängern
 - Kunden und Bücher sicher löschen (mit Abhängigkeitsprüfung via Subqueries)
+
+---
+
+### Kurswesen (`DML/Kurswesen.sql`)
+
+Dieses Skript befüllt und manipuliert die Kurswesen-Datenbank:
+
+**Eingefügte Testdaten:**
+- 5 Kurse (z. B. Windows 11, Word 2024, Word 365, Excel 365, Windows 11 Neuheiten)
+
+**DML-Operationen (UPDATE / DELETE):**
+- Startdatum und Teilnehmerzahl eines Kurses anpassen
+- Veralteten Kurs löschen
+- Teilnehmerzahlen erhöhen (neue Schulungsräume)
+- Startdatum um 7 Tage verschieben
 
 ---
 
