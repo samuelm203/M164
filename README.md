@@ -13,10 +13,12 @@ M164/
 │   ├── ComputerShop.sql        # Schema des ComputerShops (schrittweise aufgebaut)
 │   ├── ComputerShopFullScript.sql  # Überarbeitetes, bereinigtes ComputerShop-Schema
 │   ├── Druckerverwaltung.sql   # Schema zur Verwaltung von Druckern
+│   ├── Fahrzeugpark.sql        # Schema zur Verwaltung eines Fahrzeugparks
 │   └── Kurswesen.sql           # Schema zur Verwaltung von Kursen
 └── DML/                        # Datenmanipulations-Skripte
     ├── Bibliothek.sql           # Vollständige Testdaten und DML-Operationen
     ├── Bibliothek_BisKap8.sql  # Testdaten für die Bibliothek bis Kapitel 8
+    ├── Fahrzeugpark.sql        # Testdaten und DML-Operationen für den Fahrzeugpark
     └── Kurswesen.sql           # Testdaten und DML-Operationen für das Kurswesen
 ```
 
@@ -85,6 +87,17 @@ Das Skript enthält zuerst eine schrittweise Entwicklung, dann ein vollständige
 
 ---
 
+### Fahrzeugpark (`DDL/Fahrzeugpark.sql`)
+
+Dieses Skript erstellt die Datenbank **Fahrzeugpark** mit folgenden Tabellen:
+
+| Tabelle       | Beschreibung |
+|---------------|--------------|
+| `Mitarbeiter` | Mitarbeitende mit Vor- und Nachname |
+| `Fahrzeug`    | Fahrzeuge mit Marke, Typ, Neupreis, Jahrgang, Occasion-Flag und optionaler Mitarbeiterzuordnung |
+
+---
+
 ### Kurswesen (`DDL/Kurswesen.sql`)
 
 Dieses Skript erstellt die Datenbank **Kurswesen** mit folgender Tabelle:
@@ -133,6 +146,24 @@ Dieses Skript befüllt und manipuliert die Kurswesen-Datenbank:
 - Veralteten Kurs löschen
 - Teilnehmerzahlen erhöhen (neue Schulungsräume)
 - Startdatum um 7 Tage verschieben
+
+---
+
+### Fahrzeugpark (`DML/Fahrzeugpark.sql`)
+
+Dieses Skript befüllt und manipuliert die Fahrzeugpark-Datenbank:
+
+**Eingefügte Testdaten:**
+- 12 Mitarbeitende (u. a. Didier Chuche, Beat Feuz, Marco Odermatt)
+- 12 Fahrzeuge (u. a. Ford Model T, VW Käfer, Ferrari 250 GTO, Porsche 911, Lamborghini Miura)
+
+**DML-Operationen (UPDATE / DELETE / ALTER):**
+- Fahrzeuge Mitarbeitenden zuweisen (via `UPDATE` mit Subquery)
+- Fahrzeuge kaufen und verkaufen (`INSERT` / `DELETE`)
+- Kennzeichen-Spalte hinzufügen (`ALTER TABLE`) und Werte setzen
+- Mitarbeitende sicher löschen (FK-Referenzen zuvor auf `NULL` setzen)
+- Zeitwert-Spalte hinzufügen und altersabhängig berechnen (mittels `CASE WHEN`)
+- Occasionsfahrzeuge mit Zeitwert ≥ 100 000 um 20 % reduzieren
 
 ---
 
